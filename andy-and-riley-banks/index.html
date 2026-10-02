@@ -33,13 +33,13 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:"Aeonik",sys
 .col{flex:1 1 0;max-width:64px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;outline:none}
 .col .val{font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;margin-bottom:4px;white-space:nowrap}
 .col .bar{width:100%;border-radius:4px 4px 0 0;display:block;transition:filter .15s}
-.chart.spend .bar{background:var(--ink)}
-.chart.fee .bar{background:var(--red)}
+.chart.c-spend .bar{background:var(--ink)}
+.chart.c-fee .bar{background:var(--red)}
 .col:hover .bar,.col:focus-visible .bar{filter:brightness(1.25)}
 .col:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
 .xaxis{display:flex;gap:10px;margin-top:6px}
 .xl{flex:1 1 0;max-width:64px;display:flex;flex-direction:column;align-items:center;font-size:12px;line-height:1.2}
-.xl .yr{font-size:10.5px;color:var(--muted)}
+.xl .yr{font-size:11px;color:var(--muted)}
 .months{margin-top:24px;display:flex;flex-direction:column;gap:12px}
 details.month{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
 details.month>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;user-select:none}
@@ -47,7 +47,7 @@ details.month>summary::-webkit-details-marker{display:none}
 .msum-l{display:flex;align-items:center;gap:11px;min-width:0}
 .chev{color:var(--muted);font-size:20px;line-height:1;transition:transform .18s;display:inline-block}
 details[open]>summary .chev{transform:rotate(90deg)}
-.mname{font-weight:700;font-size:19px;letter-spacing:-.02em}
+.mname{white-space:nowrap;font-weight:700;font-size:19px;letter-spacing:-.02em}
 .msum-r{display:flex;align-items:center;gap:16px;flex:none}
 .msum-spend{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
 .msum-fee{font-weight:700;font-size:14px;color:var(--on-red);background:var(--red);padding:4px 11px;border-radius:999px;font-variant-numeric:tabular-nums}
@@ -71,7 +71,7 @@ details.upcoming{opacity:.72}
 .tsr{display:flex;flex-direction:column;gap:5px;padding:11px 13px;border-top:1px solid var(--line);background:var(--hair);margin-top:auto}
 .spend{font-weight:700;font-size:16px;font-variant-numeric:tabular-nums}
 .camps{font-size:12px;color:var(--muted);line-height:1.4}
-.camps .lbl{text-transform:uppercase;letter-spacing:.06em;font-size:10.5px;font-weight:500;margin-right:7px}
+.camps .lbl{text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:500;margin-right:7px}
 .mh{margin:30px 0 12px;font-weight:700;font-size:17px;letter-spacing:-.01em}
 .mh span{font-weight:500;font-size:13px;color:var(--muted);margin-left:8px}
 .shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
@@ -88,13 +88,15 @@ table.rpt tfoot td{font-weight:700;border-top:2px solid var(--ink);border-bottom
 footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.5;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .foot-logo{height:20px;color:var(--ink)}.foot-logo svg{height:20px;width:auto;display:block}
 @media (max-width:560px){.charts{grid-template-columns:1fr}.tiles{grid-template-columns:1fr}.grid{grid-template-columns:1fr}
-  .msum-r{flex-direction:column;align-items:flex-end;gap:5px}}
+  .msum-r{flex-direction:column;align-items:flex-end;gap:5px}
+  .bars{height:100px}
+  details.upcoming>summary{flex-wrap:wrap;row-gap:4px}details.upcoming .msum-r{padding-left:29px}}
 </style>
 <div class="wrap" id="root">
   <header class="top"><span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341 176" role="img" aria-label="TRS Golf">   <g transform="translate(0.000000,176.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1543 1751 c-50 -3 -95 -10 -99 -14 -5 -4 -36 -218 -70 -475 -34 -257 -65 -484 -68 -504 l-6 -38 105 0 c58 0 105 1 106 3 0 1 13 90 27 197 l27 195 102 0 c85 0 105 -3 120 -18 13 -13 24 -63 43 -200 l25 -182 99 -3 c55 -1 105 -1 111 2 8 3 4 54 -16 181 -16 97 -31 185 -34 196 -10 30 -55 80 -84 91 -26 11 -26 11 12 19 87 20 148 77 171 162 57 203 8 328 -144 371 -73 21 -271 29 -427 17z m352 -196 c17 -16 25 -35 25 -59 0 -65 -21 -137 -50 -170 l-28 -31 -126 -3 c-69 -2 -126 0 -126 5 0 15 30 237 35 261 5 21 9 22 126 22 114 0 121 -1 144 -25z"/> <path d="M2490 1747 c-67 -16 -107 -36 -142 -74 -82 -86 -104 -284 -42 -380 34 -51 91 -88 247 -158 75 -34 132 -66 139 -78 14 -27 4 -104 -17 -127 -34 -37 -79 -43 -276 -37 l-188 5 -5 -36 c-3 -20 -8 -58 -12 -83 l-6 -47 115 -17 c146 -22 377 -17 449 10 103 37 161 149 162 315 1 141 -34 180 -245 276 -79 36 -152 73 -161 81 -33 30 -18 140 21 160 9 4 108 10 221 13 l205 5 9 68 c5 37 6 70 3 74 -32 32 -376 53 -477 30z"/> <path d="M517 1698 c-4 -24 -9 -64 -13 -90 l-6 -48 146 0 147 0 -6 -32 c-10 -56 -105 -781 -105 -800 0 -16 11 -18 105 -18 58 0 105 1 106 3 0 1 26 191 57 422 l57 420 146 3 147 3 6 44 c3 25 9 65 12 90 l6 45 -400 0 -400 0 -5 -42z"/> </g> <g transform="translate(0.000000,150.4000) scale(0.100000,-0.100000)" fill="#FC3137" stroke="none"> <path d="M146 97 l-119 -92 1587 -3 1587 -2 104 92 c58 50 105 93 105 95 0 2 -708 3 -1572 3 l-1573 -1 -119 -92z"/> </g> </svg> </span><span class="eyebrow">Partnership Ads Performance Fee Report</span></header>
   <section class="hero"><h1>Andy and Riley Banks</h1><div class="handle">@father_son_golf</div>
     <div class="period">Paid ads featuring your content · newest month first</div></section>
-<section class="charts"><figure class="chart spend"><figcaption>Ad spend by month</figcaption><div class="bars"><div class="col" tabindex="0" title="August 2026: £2,914" aria-label="August 2026: £2,914"><span class="val">£2.9k</span><span class="bar" style="height:calc((100% - 22px) * 1.0000)"></span></div><div class="col" tabindex="0" title="September 2026: £2,870" aria-label="September 2026: £2,870"><span class="val">£2.9k</span><span class="bar" style="height:calc((100% - 22px) * 0.9849)"></span></div></div><div class="xaxis"><div class="xl"><span>Aug</span><span class="yr">2026</span></div><div class="xl"><span>Sep</span><span class="yr">2026</span></div></div></figure><figure class="chart fee"><figcaption>Your fee by month</figcaption><div class="bars"><div class="col" tabindex="0" title="August 2026: £146" aria-label="August 2026: £146"><span class="val">£146</span><span class="bar" style="height:calc((100% - 22px) * 1.0000)"></span></div><div class="col" tabindex="0" title="September 2026: £144" aria-label="September 2026: £144"><span class="val">£144</span><span class="bar" style="height:calc((100% - 22px) * 0.9849)"></span></div></div><div class="xaxis"><div class="xl"><span>Aug</span><span class="yr">2026</span></div><div class="xl"><span>Sep</span><span class="yr">2026</span></div></div></figure></section>
+<section class="charts"><figure class="chart c-spend"><figcaption>Ad spend by month</figcaption><div class="bars"><div class="col" tabindex="0" title="August 2026: £2,914" aria-label="August 2026: £2,914"><span class="val">£2.9k</span><span class="bar" style="height:calc((100% - 22px) * 1.0000)"></span></div><div class="col" tabindex="0" title="September 2026: £2,870" aria-label="September 2026: £2,870"><span class="val">£2.9k</span><span class="bar" style="height:calc((100% - 22px) * 0.9849)"></span></div></div><div class="xaxis"><div class="xl"><span>Aug</span><span class="yr">2026</span></div><div class="xl"><span>Sep</span><span class="yr">2026</span></div></div></figure><figure class="chart c-fee"><figcaption>Your fee by month</figcaption><div class="bars"><div class="col" tabindex="0" title="August 2026: £146" aria-label="August 2026: £146"><span class="val">£146</span><span class="bar" style="height:calc((100% - 22px) * 1.0000)"></span></div><div class="col" tabindex="0" title="September 2026: £144" aria-label="September 2026: £144"><span class="val">£144</span><span class="bar" style="height:calc((100% - 22px) * 0.9849)"></span></div></div><div class="xaxis"><div class="xl"><span>Aug</span><span class="yr">2026</span></div><div class="xl"><span>Sep</span><span class="yr">2026</span></div></div></figure></section>
   <div class="months">
 <details class="month upcoming">
       <summary>
