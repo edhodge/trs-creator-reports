@@ -33,7 +33,7 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:"Aeonik",sys
 .col{flex:1 1 0;max-width:64px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
 .col .val{font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;margin-bottom:4px;white-space:nowrap}
 .col .bar{width:100%;border-radius:4px 4px 0 0;display:block;transition:filter .15s}
-.chart.c-spend .bar{background:var(--ink)}
+.chart.c-spend .bar{background:var(--muted)}
 .chart.c-fee .bar{background:var(--red)}
 .col:hover .bar{filter:brightness(1.25)}
 .xaxis{display:flex;gap:10px;margin-top:6px}
@@ -51,7 +51,7 @@ details[open]>summary .chev{transform:rotate(90deg)}
 .msum-spend{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
 .msum-fee{font-weight:700;font-size:14px;color:var(--on-red);background:var(--red);padding:4px 11px;border-radius:999px;font-variant-numeric:tabular-nums}
 .pending{font-size:13px;color:var(--muted);font-style:italic}
-details.upcoming{opacity:.72}
+details.upcoming .mname{color:var(--muted)}
 .mbody{padding:4px 18px 22px;border-top:1px solid var(--line)}
 .empty{color:var(--muted);font-size:14px;line-height:1.55;max-width:60ch;margin:16px 2px}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 6px}
